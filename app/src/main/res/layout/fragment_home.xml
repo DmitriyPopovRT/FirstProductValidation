@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSendServer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textProduct"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/product"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="@string/product_granit" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textExecution"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/execution"
+                app:layout_constraintStart_toEndOf="@+id/textProduct"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/execution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textNumberBatch"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/board_batch_number"
+                app:layout_constraintStart_toEndOf="@+id/textExecution"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/numberBatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFirmwareVersion"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/firmware_version"
+                app:layout_constraintStart_toEndOf="@+id/textNumberBatch"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/firmwareVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textRedumProcess"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/redum_process"
+                app:layout_constraintStart_toEndOf="@+id/textFirmwareVersion"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/redumProcess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textSerNum"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="@string/ser_num"
+                app:layout_constraintStart_toEndOf="@+id/textRedumProcess"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/serNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toTopOf="@+id/titleResultChecking"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textFirmwareVersion">
+
+                <TextView
+                    android:id="@+id/titleOperation"
+                    android:layout_width="600dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="@string/operation"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/titleResult"
+                    android:layout_width="101dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="@string/result"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/titleOperation"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/titleNote"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="@string/note"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/titleResult"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/titlePreparationBoard"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/preparation_board"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkPreparationBoard"
+                    app:layout_constraintEnd_toEndOf="@+id/titleOperation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleOperation" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkPreparationBoard"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titlePreparationBoard"
+                    app:layout_constraintTop_toBottomOf="@+id/titleResult" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonClosePreparationBoard"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkPreparationBoard"
+                    app:layout_constraintTop_toBottomOf="@+id/titleResult" />
+
+                <EditText
+                    android:id="@+id/notePreparationBoard"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonClosePreparationBoard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonClosePreparationBoard"
+                    app:layout_constraintTop_toBottomOf="@id/titleNote" />
+
+                <TextView
+                    android:id="@+id/titlePreparationBody"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/preparation_body"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkPreparationBody"
+                    app:layout_constraintEnd_toEndOf="@+id/titlePreparationBoard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titlePreparationBoard" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkPreparationBody"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titlePreparationBoard"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkPreparationBoard" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonClosePreparationBody"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkPreparationBody"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonClosePreparationBoard" />
+
+                <EditText
+                    android:id="@+id/notePreparationBody"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonClosePreparationBody"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonClosePreparationBody"
+                    app:layout_constraintTop_toBottomOf="@id/notePreparationBoard" />
+
+                <TextView
+                    android:id="@+id/titleBoardInstallationCase"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/board_installation"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkBoardInstallationCase"
+                    app:layout_constraintEnd_toEndOf="@+id/titlePreparationBody"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titlePreparationBody" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkBoardInstallationCase"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titleBoardInstallationCase"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkPreparationBody" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonCloseBoardInstallationCase"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkBoardInstallationCase"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonClosePreparationBody" />
+
+                <EditText
+                    android:id="@+id/noteBoardInstallationCase"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonCloseBoardInstallationCase"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonCloseBoardInstallationCase"
+                    app:layout_constraintTop_toBottomOf="@id/notePreparationBody" />
+
+                <TextView
+                    android:id="@+id/titleInstallationAKB"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/installation_AKB"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkInstallationAKB"
+                    app:layout_constraintEnd_toEndOf="@+id/titleBoardInstallationCase"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleBoardInstallationCase" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkInstallationAKB"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titleInstallationAKB"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkBoardInstallationCase" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonCloseInstallationAKB"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkInstallationAKB"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonCloseBoardInstallationCase" />
+
+                <EditText
+                    android:id="@+id/noteInstallationAKB"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonCloseInstallationAKB"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonCloseInstallationAKB"
+                    app:layout_constraintTop_toBottomOf="@id/noteBoardInstallationCase" />
+
+                <TextView
+                    android:id="@+id/titleProgramming"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/programming"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkProgramming"
+                    app:layout_constraintEnd_toEndOf="@+id/titleInstallationAKB"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleInstallationAKB" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkProgramming"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titleProgramming"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkInstallationAKB" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonCloseProgramming"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkProgramming"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonCloseInstallationAKB" />
+
+                <EditText
+                    android:id="@+id/noteProgramming"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonCloseProgramming"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonCloseProgramming"
+                    app:layout_constraintTop_toBottomOf="@id/noteInstallationAKB" />
+
+                <TextView
+                    android:id="@+id/titleCheck"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/check"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkCheck"
+                    app:layout_constraintEnd_toEndOf="@+id/titleProgramming"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleProgramming" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkCheck"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titleCheck"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkProgramming" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonCloseCheck"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkCheck"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonCloseProgramming" />
+
+                <EditText
+                    android:id="@+id/noteCheck"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonCloseCheck"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonCloseCheck"
+                    app:layout_constraintTop_toBottomOf="@id/noteProgramming" />
+
+                <TextView
+                    android:id="@+id/titleTopCoverInstallation"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/top_cover_installation"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkTopCoverInstallation"
+                    app:layout_constraintEnd_toEndOf="@+id/titleCheck"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleCheck" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkTopCoverInstallation"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintStart_toEndOf="@+id/titleTopCoverInstallation"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkCheck" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonCloseTopCoverInstallation"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkTopCoverInstallation"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonCloseCheck" />
+
+                <EditText
+                    android:id="@+id/noteTopCoverInstallation"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonCloseTopCoverInstallation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonCloseTopCoverInstallation"
+                    app:layout_constraintTop_toBottomOf="@id/noteCheck" />
+
+                <TextView
+                    android:id="@+id/titlePacking"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/packing"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonOkPacking"
+                    app:layout_constraintEnd_toEndOf="@+id/titleTopCoverInstallation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTopCoverInstallation" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonOkPacking"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/green_100"
+                    android:src="@drawable/ic_ok"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+                    app:layout_constraintStart_toEndOf="@+id/titlePacking"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonOkTopCoverInstallation" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonClosePacking"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/red_100"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+                    app:layout_constraintStart_toEndOf="@+id/buttonOkPacking"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonCloseTopCoverInstallation" />
+
+                <EditText
+                    android:id="@+id/noteTopPacking"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/buttonClosePacking"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonClosePacking"
+                    app:layout_constraintTop_toBottomOf="@id/noteTopCoverInstallation" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/titleResultChecking"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Вывод:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
+
+            <TextView
+                android:id="@+id/titleResultCheckingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="в результате проверки первой детали партии окружение признано"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/titleResultFit"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/titleResultFit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/green_100"
+                android:padding="8dp"
+                android:text="годным"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/titleResultCheckingText"
+                app:layout_constraintTop_toBottomOf="@id/titleResultChecking" />
+
+            <TextView
+                android:id="@+id/titleResultNoFit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/red_100"
+                android:padding="8dp"
+                android:text="не годным"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/titleResultFit"
+                app:layout_constraintTop_toBottomOf="@id/titleResultChecking" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textDate"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textSign">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/titleResultRelease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="выпуск партии"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/releaseAllow"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/releaseAllow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/green_100"
+                android:padding="8dp"
+                android:text="разрешаю"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/titleResultRelease"
+                app:layout_constraintTop_toBottomOf="@id/titleResultCheckingText" />
+
+            <TextView
+                android:id="@+id/releaseNotAllow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/red_100"
+                android:padding="8dp"
+                android:text="не разрешаю"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/releaseAllow"
+                app:layout_constraintTop_toBottomOf="@id/titleResultCheckingText" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textSign"
+                style="@style/OutlinedRoundedBox"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/sign_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSendServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:text="Отправить данные на сервер"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:icon="@drawable/ic_send"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

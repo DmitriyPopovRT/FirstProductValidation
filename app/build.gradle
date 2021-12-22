@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -42,4 +46,33 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //View binding delegate
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.0-beta01'
+
+    //Logs
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Coroutines
+    def coroutinesVersion = '1.4.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    def lifecycleVersion = '2.2.0'
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.fragment:fragment-ktx:1.3.0-beta01"
+    //LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+    // Библиотека для работы с SMB (удаленный сервер)
+    implementation "org.codelibs:jcifs:2.1.19"
+
+    //Moshi
+    def moshiVersion = '1.9.3'
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 }

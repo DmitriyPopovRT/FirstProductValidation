@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Лист проверки годности первого изделия</string>
+    <string name="product">Изделие:</string>
+    <string name="execution">Исполнение:</string>
+    <string name="board_batch_number">Номер партии платы:</string>
+    <string name="edit_text_hint">Введите текст</string>
+    <string name="product_granit">Гранит-Навигатор-6.18</string>
+    <string name="firmware_version">Версия прошивки:</string>
+    <string name="redum_process">REDUM Process:</string>
+    <string name="ser_num">Серийный номер:</string>
+    <string name="preparation_board">Подготовка платы</string>
+    <string name="operation">Операция</string>
+    <string name="result">Результат</string>
+    <string name="note">Примечание</string>
+    <string name="preparation_body">Подготовка корпуса</string>
+    <string name="board_installation">Установка платы в корпус</string>
+    <string name="installation_AKB">Установка АКБ в корпус</string>
+    <string name="programming">Программирование</string>
+    <string name="check">Проверка</string>
+    <string name="top_cover_installation">Установка верхней крышки и печать этикеток</string>
+    <string name="packing">Упаковка</string>
+    <string name="date">Дата:</string>
+    <string name="sign_title">Старший участка:</string>
+    <string name="download_settings">Загрузка настроек</string>
 </resources>
