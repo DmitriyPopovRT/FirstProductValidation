@@ -5,6 +5,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageButton
@@ -15,6 +16,7 @@ import jcifs.smb1.smb1.NtlmPasswordAuthentication
 import jcifs.smb1.smb1.SmbFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.w3c.dom.Text
 import java.util.*
 
 object Utils {
@@ -90,11 +92,83 @@ object Utils {
         }
     }
 
+    // Обрабатываем нажатие ImageButton
+    fun checkedTextView(
+        view: View,
+        buttonOk: TextView,
+        buttonClose: TextView,
+        context: Context
+    ): Boolean? {
+        when (view) {
+            buttonOk -> {
+                if (view.isActivated) {
+                    view.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.green_100)
+                    view.isActivated = false
+                } else {
+                    view.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.green_500)
+                    view.isActivated = true
+                    buttonClose.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.red_100)
+                    buttonClose.isActivated = false
+                }
+            }
+
+            buttonClose -> {
+                if (view.isActivated) {
+                    view.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.red_100)
+                    view.isActivated = false
+                } else {
+                    view.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.red_500)
+                    view.isActivated = true
+                    buttonOk.backgroundTintList =
+                        ContextCompat.getColorStateList(context, R.color.green_100)
+                    buttonOk.isActivated = false
+                }
+            }
+        }
+
+        return when {
+            buttonOk.isActivated -> {
+                true
+            }
+            buttonClose.isActivated -> {
+                false
+            }
+            else -> {
+                null
+            }
+        }
+    }
+
     // Установка значений вью, полученных с сервера
     fun setCheckedImageButtonDownloadServer(
         isChecked: Boolean,
         buttonOk: AppCompatImageButton,
         buttonClose: AppCompatImageButton,
+        context: Context
+    ) {
+        if (isChecked) {
+            buttonOk.backgroundTintList =
+                ContextCompat.getColorStateList(context, R.color.green_500)
+            buttonOk.isActivated = true
+            buttonClose.isActivated = false
+        } else if (!isChecked) {
+            buttonClose.backgroundTintList =
+                ContextCompat.getColorStateList(context, R.color.red_500)
+            buttonClose.isActivated = true
+            buttonOk.isActivated = false
+        }
+    }
+
+    // Установка значений вью, полученных с сервера
+    fun setCheckedTextViewDownloadServer(
+        isChecked: Boolean,
+        buttonOk: TextView,
+        buttonClose: TextView,
         context: Context
     ) {
         if (isChecked) {

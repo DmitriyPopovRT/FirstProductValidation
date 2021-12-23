@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,8 +14,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu"
         app:title="@string/app_name"
         app:titleTextColor="@color/white" />
+
+    <TextView
+        android:id="@+id/titleCheckingSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonClear"
+        app:layout_constraintEnd_toStartOf="@+id/buttonClear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:text="Настройки от 06.10.2021" />
+
+    <ImageView
+        android:id="@+id/buttonClear"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_close"
+        android:text="@string/clear"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -26,16 +56,19 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textProduct"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/product"
+                app:layout_constraintEnd_toStartOf="@+id/textExecution"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -50,11 +83,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textExecution"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/execution"
+                app:layout_constraintEnd_toStartOf="@+id/textNumberBatch"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textProduct"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -67,11 +102,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textNumberBatch"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/board_batch_number"
+                app:layout_constraintEnd_toStartOf="@+id/textFirmwareVersion"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textExecution"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -84,11 +121,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textFirmwareVersion"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/firmware_version"
+                app:layout_constraintEnd_toStartOf="@+id/textRedumProcess"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textNumberBatch"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -101,11 +140,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textRedumProcess"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:hint="@string/redum_process"
+                app:layout_constraintEnd_toStartOf="@+id/textSerNum"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textFirmwareVersion"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -118,11 +159,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textSerNum"
                 style="@style/OutlinedRoundedBox"
-                android:layout_width="210dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:hint="@string/ser_num"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textRedumProcess"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -147,7 +191,7 @@
 
                 <TextView
                     android:id="@+id/titleOperation"
-                    android:layout_width="600dp"
+                    android:layout_width="500dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="1dp"
@@ -241,6 +285,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonClosePreparationBoard"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonClosePreparationBoard"
@@ -295,6 +340,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonClosePreparationBody"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonClosePreparationBody"
@@ -349,6 +395,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonCloseBoardInstallationCase"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonCloseBoardInstallationCase"
@@ -403,6 +450,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonCloseInstallationAKB"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonCloseInstallationAKB"
@@ -457,6 +505,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonCloseProgramming"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonCloseProgramming"
@@ -511,6 +560,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonCloseCheck"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonCloseCheck"
@@ -565,6 +615,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonCloseTopCoverInstallation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonCloseTopCoverInstallation"
@@ -616,13 +667,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/buttonCloseTopCoverInstallation" />
 
                 <EditText
-                    android:id="@+id/noteTopPacking"
+                    android:id="@+id/notePacking"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="1dp"
                     android:background="@color/white"
+                    android:padding="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/buttonClosePacking"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonClosePacking"
