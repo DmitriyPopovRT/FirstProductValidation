@@ -75,4 +75,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    //Datetimepicker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 }

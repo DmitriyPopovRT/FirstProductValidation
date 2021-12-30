@@ -181,26 +181,6 @@ class Repository(
 //        }
     }
 
-//    private fun stringJsonToCustomAdapter(strJson: String): CheckingSettingsCustomAdapter.CustomCheckingSettings? {
-//        val moshi = Moshi.Builder()
-//            .add(CheckingSettingsCustomAdapter())
-////            .add(CheckingSettingsCustomAdapter.ColorAdapter2())
-////            .add(CheckingSettingsCustomAdapter.ColorAdapter())
-//            .build()
-//
-//        val adapter =
-//            moshi.adapter(CheckingSettingsCustomAdapter.CustomCheckingSettings::class.java)
-//                .nonNull()
-//
-////        return try {
-//        return adapter.fromJson(strJson)
-//        //            Timber.d("parse t = $t")
-////        } catch (e: Exception) {
-////            Timber.d("parse error = ${e.message}")
-////            null
-////        }
-//    }
-
     // Проверяет существует ли файл настроек
     suspend fun isExistFile(year: String, month: String, day: String): Boolean {
         return withContext(Dispatchers.Default) {

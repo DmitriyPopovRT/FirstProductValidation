@@ -5,10 +5,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.popov.firstproductvalidation.Utils.haveQ
 import timber.log.Timber
-import java.util.*
 
 class HomeViewModel(
     application: Application
@@ -21,7 +22,6 @@ class HomeViewModel(
         SingleLiveEvent<FirstProductCustomAdapter.CustomFirstProduct?>()
     private val isSendingLiveData = SingleLiveEvent<Boolean>()
     private val isErrorSettingsLiveData = SingleLiveEvent<String>()
-    private val isFileSettingsExistLiveData = SingleLiveEvent<Boolean>()
     private val permissionsGrantedMutableLiveData = MutableLiveData(true)
 
     val stringJson: LiveData<String>
@@ -32,8 +32,6 @@ class HomeViewModel(
         get() = isErrorSettingsLiveData
     val isSending: LiveData<Boolean>
         get() = isSendingLiveData
-    val isFileSettingsExist: LiveData<Boolean>
-        get() = isFileSettingsExistLiveData
     val permissionsGrantedLiveData: LiveData<Boolean>
         get() = permissionsGrantedMutableLiveData
 
@@ -118,6 +116,7 @@ class HomeViewModel(
         permissionsGrantedMutableLiveData.postValue(false)
     }
 
+    // СОхранение файла на сервер
     fun saveFileToServer(strJson: String, date: String) {
         viewModelScope.launch {
 //            isLoadingLiveData.postValue(true)
@@ -136,12 +135,11 @@ class HomeViewModel(
         }
     }
 
+    // Загрузка файла с сервера
     fun downloadFileToServer(year: String, month: String, day: String) {
         viewModelScope.launch {
 //            isLoadingLiveData.postValue(true)
             try {
-//                val result = repository.downloadFileToServer(year, month, day)
-//                val adapter = stringJsonToCustomAdapter(result)
                 val adapter = repository.download(year, month, day)
                 downloadStringJsonSettingsLiveData.postValue(adapter)
             } catch (t: Throwable) {
@@ -153,14 +151,17 @@ class HomeViewModel(
         }
     }
 
-    fun isExistFile(year: String, month: String, day: String) {
-        viewModelScope.launch {
+    // Проверка существования файла
+    suspend fun isExistFile(year: String, month: String, day: String): Boolean {
+        return withContext(Dispatchers.Default) {
+//        viewModelScope.launch {
             try {
                 val result = repository.isExistFile(year, month, day)
-                isFileSettingsExistLiveData.postValue(result)
+                result
             } catch (e: Exception) {
                 Timber.e(e)
                 isErrorSettingsLiveData.postValue(e.message)
+                false
             }
         }
     }
